@@ -80,4 +80,13 @@ And of course, to retrieve a url of your image with resized height and width cal
 
 > 100 in the above examples can be any number > 0. Similar to imageUrl() methods, this method too does not verify the existence of the actual image.
 
-##TODO
+##TODOs
+1. Add Unit-Tests,
+2. Add More image editing capabilities,
+3. Add Support to Delete Images,
+4. Add Support for Image versioning
+
+##Licence
+Cloudinary is available under the MIT license. See the LICENSE file for more information.
+
+###With ♥ by [Surebro](http://surebro.com)
