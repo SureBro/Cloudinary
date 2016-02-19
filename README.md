@@ -1,6 +1,6 @@
 # Cloudinary
 
-This is the unofficial meteor package to interface with Cloudinary. This is not a meteor wrapper around the official npm library. This is a package specifically built for meteor and therefore some functions might be missing. We only added functions that were required for our use case. Feel free to contribute to this repo if you feel like it. We will keep adding stuff.
+This is the unofficial meteor package for Cloudinary. This is not a meteor wrapper around the official npm library. This is a package specifically built for meteor and therefore some functions might be missing. We only added functions that were required for our use case. Feel free to contribute to this repo if you feel like it. We will keep adding stuff.
 
 ## Getting Started
 
@@ -68,7 +68,7 @@ This function returns the url of the image in string format.
 - **width** : The required width of the image. Should be a number.
 - **height** : The required height of the image. Should also be a number.
 
-**You can either only specify the width or only specify the height**. If you specify only one of either the width or the height, the other param will be calculated to keep intact the aspect ratio of the image. 
+**You can either specify both or you can choose to specify the height or width**. If you specify only one of either the width or the height, the other param will be calculated to keep intact the aspect ratio of the image. 
 
 To only specify the width call, *Cloudinary.resizeImageUrl('randomPublicId', 100, 0);* or *Cloudinary.resizeImageUrl('randomPublicId', 100, '')*  or *Cloudinary.resizeImageUrl('randomPublicId', 100, null)*
 
