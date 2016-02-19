@@ -7,7 +7,7 @@ This is the unofficial meteor package for Cloudinary. This is not a meteor wrapp
 Add Cloudinary to your project:
 
 `
-meteor add gaopai:cloudinary
+meteor add surebro:cloudinary
 `
 
 You need to initialize Cloudinary before you can use it. Use this opportuinity to set your api_key, app_secret and cloudname.
