@@ -28,7 +28,7 @@ Package.onTest(function(api) {
 });
 
 function configure(api){
-  api.addFiles('cloudinary.js');
+  api.addFiles('lib/cloudinary.js');
   api.addFiles('lib/_init.js');
   api.addFiles('lib/utils.js');
 }
