@@ -1,4 +1,4 @@
-# Cloudinary
+# Cloudinary [![Build Status](https://travis-ci.org/SureBro/Cloudinary.svg?branch=master)](https://travis-ci.org/SureBro/Cloudinary)
 
 This is the unofficial meteor package for Cloudinary. This is not a meteor wrapper around the official npm library. This is a package specifically built for meteor and therefore some functions might be missing. We only added functions that were required for our use case. Feel free to contribute to this repo if you feel like it. We will keep adding stuff.
 
