@@ -1,6 +1,6 @@
 # Cloudinary
 
-This is the unofficial meteor package to interface with Cloudinary. This is not a meteor wrapper around the official npm library. This is a package specifically built for meteor and therefore some functions might be missing. We only added functions that were required for our use case. Feel free to contribute to this repo if you feel like it. We will keep adding stuff.
+This is the unofficial meteor package for Cloudinary. This is not a meteor wrapper around the official npm library. This is a package specifically built for meteor and therefore some functions might be missing. We only added functions that were required for our use case. Feel free to contribute to this repo if you feel like it. We will keep adding stuff.
 
 ## Getting Started
 
