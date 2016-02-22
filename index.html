@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Cloudinary by SureBro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Cloudinary</h1>
+      <h2 class="project-tagline">An unofficial Cloudinary package built specifically for Meteor. </h2>
+      <a href="https://github.com/SureBro/Cloudinary" class="btn">View on GitHub</a>
+      <a href="https://github.com/SureBro/Cloudinary/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/SureBro/Cloudinary/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="cloudinary-" class="anchor" href="#cloudinary-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cloudinary <a href="https://travis-ci.org/SureBro/Cloudinary"><img src="https://travis-ci.org/SureBro/Cloudinary.svg?branch=master" alt="Build Status"></a>
+</h1>
+
+<p>This is the unofficial meteor package for Cloudinary. This is not a meteor wrapper around the official npm library. This is a package specifically built for meteor and therefore some functions might be missing. We only added functions that were required for our use case. Feel free to contribute to this repo if you feel like it. We will keep adding stuff.</p>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting Started</h2>
+
+<p>Add Cloudinary to your project:</p>
+
+<p><code>
+meteor add surebro:cloudinary
+</code></p>
+
+<p>You need to initialize Cloudinary before you can use it. Use this opportuinity to set your api_key, app_secret and cloudname.
+See the <a href="http://cloudinary.com/documentation/api_and_access_identifiers">Cloudinary Docs</a> to find out what each of those are.</p>
+
+<p><code>
+Cloudniary.initialize('API_KEY','APP_SECRET','CLOUD_NAME');
+</code></p>
+
+<p>Now you are ready to use Cloudinary to upload your images to Cloudinary.</p>
+
+<h2>
+<a id="advanced-setup" class="anchor" href="#advanced-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advanced Setup</h2>
+
+<p>By default the base url used by Cloudinary will be the SSL version. If you want to use the non-secure version add <code>Cloudinary.switchSecurityMode()</code></p>
+
+<blockquote>
+<p>Call the same method to switch back to secure mode. </p>
+</blockquote>
+
+<h2>
+<a id="uploading-images-to-cloudinary" class="anchor" href="#uploading-images-to-cloudinary" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Uploading Images to Cloudinary</h2>
+
+<p>To upload an image call <code>Cloudinary.uploadImage(image, callback)</code>. These images will be added to any of your folders. To add an image to a particular folder use <code>uploadImageToFolder()</code> instead. There are a lot of optional parameters you can set when you upload an image and there are cases where you might have to set these. If yes then use <code>uploadImageWithOptions()</code>. All these functions will take care of the <a href="http://cloudinary.com/documentation/upload_images#creating_api_authentication_signatures">authentication signature</a> for you.</p>
+
+<h3>
+<a id="cloudinaryuploadimageimage-callback" class="anchor" href="#cloudinaryuploadimageimage-callback" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Cloudinary.uploadImage(image, callback);</em>
+</h3>
+
+<ul>
+<li><p><strong>image</strong> : Image here could be in any format recognized by the Cloudinary API. So image can either be a byte array buffer, data URI (Base 64 encoded), remote FTP, HTTP or HTTPS URL of an image or an S3 URL. For more detail check <a href="http://cloudinary.com/documentation/image_upload_api_reference#upload">this</a> out.</p></li>
+<li>
+<p><strong>callback</strong> : A callback function that should be called when the upload process is complete. Your callback should be prepared to receive 2 parameters, </p>
+
+<ul>
+<li>
+<em>error</em> : An error object as per the specifications listed <a href="http://cloudinary.com/documentation/admin_api#error_handling">here.</a>
+</li>
+<li>
+<em>data</em> : An response object from the Cloudinary API. Information about the uploaded image can be found in <em>data.data</em>. Your <em>data.data</em> should look like <a href="http://cloudinary.com/documentation/upload_images#upload_response">this.</a> You should also check the <em>data.statusCode</em> is actually 200 in your callback before you assume that your upload was successful.<br>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="cloudinaryuploadimagetofolderimage-folder-callback" class="anchor" href="#cloudinaryuploadimagetofolderimage-folder-callback" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Cloudinary.uploadImageToFolder(image, folder, callback);</em>
+</h3>
+
+<ul>
+<li><p><strong>image</strong> : <em>Similar to the one posted above</em></p></li>
+<li><p><strong>folder</strong> : A name <em>(String)</em> of a folder where the image should be uploaded. Make sure that you have created the folder beforehand.</p></li>
+<li><p><strong>callback</strong> : <em>Similar to the one posted above</em></p></li>
+</ul>
+
+<h3>
+<a id="cloudinaryuploadimagewithoptionsoptions-callback" class="anchor" href="#cloudinaryuploadimagewithoptionsoptions-callback" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Cloudinary.uploadImageWithOptions(options, callback);</em>
+</h3>
+
+<ul>
+<li><p><strong>options</strong> : Your parameter object that includes both optional and required parameters as per the API <a href="http://cloudinary.com/documentation/image_upload_api_reference#upload">specifications</a>.</p></li>
+<li><p><strong>callback</strong> : <em>Similar to the one posted above</em></p></li>
+</ul>
+
+<h2>
+<a id="generating-image-urls" class="anchor" href="#generating-image-urls" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generating image urls</h2>
+
+<p>You can choose to save the image url in your database for later use or you can use the package t generate the url for you. Using the package to generate the url is a better solution because this way you can really take advantage of one of Cloudinary's awesome features, image editing right in the URL. Right now the package only supports re-sizing the image. </p>
+
+<p>If you want to the url of the original image use <code>imageUrl()</code>. If you want to fetch the url of a resized image use, <code>resizedImageUrl()</code>. If you plan on using these methods you will have to find a way to retrieve the public id and the version of the image you want the url for. So either store it in your database or file or whatever.</p>
+
+<h3>
+<a id="cloudinaryimageurlpublicid-version" class="anchor" href="#cloudinaryimageurlpublicid-version" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Cloudinary.imageUrl(publicId, version);</em>
+</h3>
+
+<ul>
+<li>
+<strong>publicId</strong> : The public id of the image</li>
+<li>
+<strong>version</strong> : The version of the image</li>
+</ul>
+
+<p>This function returns the url of the image in string format.</p>
+
+<blockquote>
+<p>This function does not verify that the image actually exists. This is a convenience function that concats the values to build the semantically correct url. So even if you provide information for a non-existing image, you still will get a result.</p>
+</blockquote>
+
+<h3>
+<a id="cloudinaryresizedimageurlpublicid-width-height" class="anchor" href="#cloudinaryresizedimageurlpublicid-width-height" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>Cloudinary.resizedImageUrl(publicId, width, height);</em>
+</h3>
+
+<ul>
+<li>
+<strong>publicId</strong> : The public id of the image</li>
+<li>
+<strong>width</strong> : The required width of the image. Should be a number.</li>
+<li>
+<strong>height</strong> : The required height of the image. Should also be a number.</li>
+</ul>
+
+<p><strong>You can either specify both or you can choose to specify the height or width</strong>. If you specify only one of either the width or the height, the other param will be calculated to keep intact the aspect ratio of the image. </p>
+
+<p>To only specify the width call, <em>Cloudinary.resizeImageUrl('randomPublicId', 100, 0);</em> or <em>Cloudinary.resizeImageUrl('randomPublicId', 100, '')</em>  or <em>Cloudinary.resizeImageUrl('randomPublicId', 100, null)</em></p>
+
+<p>To only specify the height call, <em>Cloudinary.resizeImageUrl('randomPublicId', 0, 100);</em> or <em>Cloudinary.resizeImageUrl('randomPublicId',  '', 100)</em>  or <em>Cloudinary.resizeImageUrl('randomPublicId', null,100)</em> </p>
+
+<p>They all work but I prefer to be super explicit and therefore just use the <code>null</code> version. </p>
+
+<p>And of course, to retrieve a url of your image with resized height and width call, <em>Cloudinary.resizeImageUrl('randomPublicId', 100, 100);</em> </p>
+
+<blockquote>
+<p>100 in the above examples can be any number &gt; 0. Similar to imageUrl() methods, this method too does not verify the existence of the actual image.</p>
+</blockquote>
+
+<h2>
+<a id="todos" class="anchor" href="#todos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TODOs</h2>
+
+<ol>
+<li>Add Unit-Tests,</li>
+<li>Add More image editing capabilities,</li>
+<li>Add Support to Delete Images,</li>
+<li>Add Support for Image versioning</li>
+</ol>
+
+<h2>
+<a id="licence" class="anchor" href="#licence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Licence</h2>
+
+<p>Cloudinary is available under the MIT license. See the LICENSE file for more information.</p>
+
+<h3>
+<a id="with--by-surebro" class="anchor" href="#with--by-surebro" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>With ♥ by <a href="http://surebro.com">Surebro</a>
+</h3>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/SureBro/Cloudinary">Cloudinary</a> is maintained by <a href="https://github.com/SureBro">SureBro</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
